@@ -1,9 +1,11 @@
+
 // ===== DOM element references =====
 let player1 = document.getElementById('player1')        // input: player 1 name
 let player2 = document.getElementById('player2')        // input: player 2 name
 let firstP = document.getElementById('firstP')          // input: who plays first
 let role = document.getElementById("role")              // status bar showing current turn
 let start_form = document.getElementById("start-form")// start panel with inputs
+let Separation_wall = document.getElementById("Separation_wall")
 let btnstart = document.getElementById("btnstart")      // start button
 let btnreplay = document.getElementById("btnreplay")    // replay button
 let btnExit = document.getElementById("btnExit")        // exit button
@@ -11,11 +13,10 @@ let Rep_OR_EX = document.getElementById("Rep_OR_EX")    // replay/exit panel
 let player = ''         // name of the player whose turn it is
 let Pwinner = ''        // name of the last player who made a move
 let item = []           // array holding the 9 board squares
-let j = 0;              // counter of filled squares
-let i = ''              // loop variable
+let j = 0;              // counter of filled squares           
 
 // Grab each square (item1 to item9)
-for(i=1 ; i < 10 ; i++){
+for(let i=1 ; i < 10 ; i++){
     item[i] = document.getElementById('item' + i)
 }
 
@@ -27,6 +28,8 @@ function end(num1,num2,num3){
    item[num3].style.background = '#000'
    role.style.background ='green'
    Rep_OR_EX.style.display = 'flex'
+   Separation_wall.style.display = 'block'
+
 }
 
 // Checks all 8 winning lines (3 rows, 3 columns, 2 diagonals); also detects a draw
@@ -77,6 +80,7 @@ else if(item[3].innerHTML == item[6].innerHTML && item[6].innerHTML == item[9].i
    Rep_OR_EX.style.display = 'flex'
    role.textContent = 'Draw'
    role.style.background = '#ff0000'
+   Separation_wall.style.display = "block"
   }
 
  }
@@ -86,7 +90,7 @@ else if(item[3].innerHTML == item[6].innerHTML && item[6].innerHTML == item[9].i
 // Handles a click on a square: checks the square is empty, then places X or O
 function game(id){
 
-j++ // assume the move is valid, increment the counter
+    j++ // assume the move is valid, increment the counter
       // square already contains X
       if(document.getElementById(id).textContent == 'X'){
        document.getElementById(id).textContent = 'X'
@@ -168,8 +172,7 @@ function start_game(){
     if(player1.value != '' && player2.value != '' && firstP.value != ''){
        player = sanitize(firstP.value)
        role.textContent = 'this turn is :' + player
-       document.getElementById("game_container").style.filter = 'blur(0)'
-       document.getElementById("game_container").style.pointerEvents = 'auto'
+       Separation_wall.style.display = 'none'
        start_form.style.display = 'none'
        return;
     }
@@ -190,9 +193,20 @@ function error(id){
 }
 
 
-// Replay: clears the board, resets the counter and shows the start panel again
 btnreplay.onclick = function(){
-  location.reload()
+  j = 0;
+
+  item.forEach(item => {
+    item.textContent = '';
+    item.style.backgroundColor = "#430179"
+  })
+
+  role.style.backgroundColor = "#dcdcdc"
+  role.textContent = 'this turn is : ' + player
+
+  Rep_OR_EX.style.display = "none"
+  Separation_wall.style.display = "none"
+  
 }
 
 // Exit: closes the browser tab/window
