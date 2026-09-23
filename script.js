@@ -212,11 +212,7 @@ btnreplay.onclick = function(){
 // Exit: tries to close the tab; browsers block it for script-opened tabs,
 // so fall back to navigating to a blank page
 btnExit.onclick = function(){
-  window.close()
-  setTimeout(function(){
-    window.location.href = 'about:blank'
-  }, 100)
-}
+    window.location.href = 'google.com'
 
 
 
