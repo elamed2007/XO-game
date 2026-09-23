@@ -13,7 +13,3 @@ Play it online: https://elamed2007.github.io/XO-game/
 - Replay and Exit buttons
 - Responsive design for desktop, tablet and phone
 - XSS protection on player names
-
-## How to run locally
-
-Open `index.html` in any web browser.
