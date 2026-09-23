@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="description" content="XO game" />
+  <meta http-equiv="Content-Security-Policy"
+    content="default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline'; img-src 'self'; font-src 'self'" />
+  <title>XO Game</title>
+  <link rel="stylesheet" href="style.css?v=1" />
+
+</head>
+
+<body>
+
+  <div id="start-form">
+    <h1>Please enter the information below</h1>
+    <input onkeyup="error(this.id)" type="text" id="player1" maxlength="15" placeholder="enter player 1 name">
+    <input onkeyup="error(this.id)" type="text" id="player2" maxlength="15" placeholder="enter player 2 name">
+    <input onkeyup="error(this.id)" type="text" id="firstP" maxlength="15" placeholder="who will play first ?">
+    <button onclick="start_game()" id="btnstart">start now</button>
+  </div>
+
+  <div id="Separation_wall"></div>
+
+  <div id="game_container">
+  
+    <div id="title">XO GAME</div>
+
+    <div id="role">xo</div>
+
+    <div class="squares">
+
+      <div onclick="game(this.id)" class="square" id="item1"></div>
+      <div onclick="game(this.id)" class="square" id="item2"></div>
+      <div onclick="game(this.id)" class="square" id="item3"></div>
+
+      <div onclick="game(this.id)" class="square" id="item4"></div>
+      <div onclick="game(this.id)" class="square" id="item5"></div>
+      <div onclick="game(this.id)" class="square" id="item6"></div>
+
+      <div onclick="game(this.id)" class="square" id="item7"></div>
+      <div onclick="game(this.id)" class="square" id="item8"></div>
+      <div onclick="game(this.id)" class="square" id="item9"></div>
+
+    </div>
+
+    <div id="Rep_OR_EX">
+
+      <button id="btnreplay" class="btn">Replay</button>
+      <p style="font-weight: 500;">OR</p>
+      <button id="btnExit" class="btn">Exit</button>
+
+    </div>
+
+  </div>
+
+
+
+  <script src="script.js"></script>
+</body>
